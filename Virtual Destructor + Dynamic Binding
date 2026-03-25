@@ -1,0 +1,54 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Base
+{
+public:
+    Base()
+    {
+        cout << "Base Constructor called" << endl;
+    }
+
+    virtual void display()
+    {
+        cout << "Display function of Base class" << endl;
+    }
+
+    virtual ~Base()     // Virtual Destructor
+    {
+        cout << "Base Destructor called" << endl;
+    }
+};
+
+// Derived class
+class Derived : public Base
+{
+public:
+    Derived()
+    {
+        cout << "Derived Constructor called" << endl;
+    }
+
+    void display()
+    {
+        cout << "Display function of Derived class" << endl;
+    }
+
+    ~Derived()
+    {
+        cout << "Derived Destructor called" << endl;
+    }
+};
+
+int main()
+{
+    Base *b;
+    b = new Derived();     // Dynamic binding
+
+    b->display();          // Calls Derived display()
+
+    delete b;              // Calls both destructors because destructor is virtual
+
+    return 0;
+}

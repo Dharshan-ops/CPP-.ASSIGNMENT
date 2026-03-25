@@ -1,0 +1,67 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Employee
+{
+public:
+    virtual void calculateSalary()
+    {
+        cout << "Calculating employee salary" << endl;
+    }
+};
+
+// Derived class 1
+class Manager : public Employee
+{
+public:
+    void calculateSalary()
+    {
+        int basic = 50000;
+        int allowance = 15000;
+        cout << "Manager Salary = " << basic + allowance << endl;
+    }
+};
+
+// Derived class 2
+class Engineer : public Employee
+{
+public:
+    void calculateSalary()
+    {
+        int basic = 40000;
+        int bonus = 8000;
+        cout << "Engineer Salary = " << basic + bonus << endl;
+    }
+};
+
+// Derived class 3
+class Intern : public Employee
+{
+public:
+    void calculateSalary()
+    {
+        int stipend = 15000;
+        cout << "Intern Stipend = " << stipend << endl;
+    }
+};
+
+int main()
+{
+    Employee* emp[3];
+
+    Manager m;
+    Engineer e;
+    Intern i;
+
+    emp[0] = &m;
+    emp[1] = &e;
+    emp[2] = &i;
+
+    for(int j = 0; j < 3; j++)
+    {
+        emp[j]->calculateSalary();
+    }
+
+    return 0;
+}

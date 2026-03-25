@@ -1,0 +1,77 @@
+#include <iostream>
+using namespace std;
+
+// Abstract Base Class
+class Vehicle
+{
+public:
+    virtual void start() = 0;   // Pure virtual function
+    virtual void stop() = 0;    // Pure virtual function
+};
+
+// Derived class 1
+class Car : public Vehicle
+{
+public:
+    void start()
+    {
+        cout << "Car starts with a key or button" << endl;
+    }
+
+    void stop()
+    {
+        cout << "Car stops using brake pedal" << endl;
+    }
+};
+
+// Derived class 2
+class Bike : public Vehicle
+{
+public:
+    void start()
+    {
+        cout << "Bike starts with a kick or self-start" << endl;
+    }
+
+    void stop()
+    {
+        cout << "Bike stops using hand brake" << endl;
+    }
+};
+
+// Derived class 3
+class Bus : public Vehicle
+{
+public:
+    void start()
+    {
+        cout << "Bus starts with ignition system" << endl;
+    }
+
+    void stop()
+    {
+        cout << "Bus stops using air brakes" << endl;
+    }
+};
+
+int main()
+{
+    Vehicle *v[3];
+
+    Car c;
+    Bike b;
+    Bus bs;
+
+    v[0] = &c;
+    v[1] = &b;
+    v[2] = &bs;
+
+    for(int i = 0; i < 3; i++)
+    {
+        v[i]->start();
+        v[i]->stop();
+        cout << endl;
+    }
+
+    return 0;
+}
